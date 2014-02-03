@@ -1,0 +1,11 @@
+- include: common.yml
+  sudo: yes
+
+- include: rbenv.yml
+  sudo: yes
+
+- include: ruby.yml
+  sudo: yes
+
+- include: gemrc.yml
+  sudo: yes
