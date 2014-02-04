@@ -1,14 +1,29 @@
 - name: rubyが既にインストールされていないかチェック
-  shell: RBENV_ROOT=/home/{{ ruby_dep_user }}/.rbenv /home/{{ ruby_dep_user }}/.rbenv/bin/rbenv versions | grep {{ version }} | tr '*' ' ' | sed -e 's/\s\+//' | cut -f1 -d' '
+  shell: rbenv versions | grep {{ version }} | tr '*' ' ' | sed -e 's/\s\+//' | cut -f1 -d' '
   register: ruby_is_installed
+  environment:
+    RBENV_ROOT: "{{ rbenv_root }}"
+    PATH: "{{ bin_path }}"
 
 - name: rubyインストール
-  shell: RBENV_ROOT=/home/{{ ruby_dep_user }}/.rbenv /home/{{ ruby_dep_user }}/.rbenv/bin/rbenv install {{ version }}
+  shell: rbenv install {{ version }}
   async: 12000
   poll: 60
+  when: ruby_is_installed.stdout == ""
+  environment:
+    RBENV_ROOT: "{{ rbenv_root }}"
+    PATH: "{{ bin_path }}"
 
 - name: rbenv再読み込み
-  shell: RBENV_ROOT=/home/{{ ruby_dep_user }}/.rbenv /home/{{ ruby_dep_user }}/.rbenv/bin/rbenv rehash
+  shell: rbenv rehash
+  when: ruby_is_installed.stdout == ""
+  environment:
+    RBENV_ROOT: "{{ rbenv_root }}"
+    PATH: "{{ bin_path }}"
 
 - name: rbenvコンフィグ
-  shell: RBENV_ROOT=/home/{{ ruby_dep_user }}/.rbenv /home/{{ ruby_dep_user }}/.rbenv/bin/rbenv global {{ version }}
+  shell: rbenv global {{ version }}
+  when: ruby_is_installed.stdout == ""
+  environment:
+    RBENV_ROOT: "{{ rbenv_root }}"
+    PATH: "{{ bin_path }}"

@@ -4,3 +4,5 @@
       - role: ruby
         version: 2.1.0
         ruby_dep_user: vagrant
+        rbenv_root: "/usr/local/rbenv"
+        bin_path: "/usr/local/rbenv/bin:{{ ansible_env.PATH }}"
