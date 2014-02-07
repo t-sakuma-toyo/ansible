@@ -2,5 +2,4 @@
   yum: name={{ item }} state=latest
   with_items:
     - git
-    - ImageMagick
     - samba

@@ -6,3 +6,7 @@
         ruby_dep_user: vagrant
         rbenv_root: "/usr/local/rbenv"
         bin_path: "/usr/local/rbenv/bin:{{ ansible_env.PATH }}"
+
+      - role: rmagick
+
+      - role: active_support

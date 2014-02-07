@@ -1,0 +1,4 @@
+- name: Rmagickをインストール
+  gem: name=rmagick state=latest executable=/usr/local/rbenv/shims/gem
+  tags:
+    - rmagick
