@@ -1,0 +1,2 @@
+- name: Pearインストール
+  yum: name=php54w-pear state=latest

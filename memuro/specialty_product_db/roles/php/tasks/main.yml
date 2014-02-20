@@ -1,2 +1,8 @@
 - include: php.yml
   sudo: yes
+
+- include: php_mysql.yml
+  sudo: yes
+
+- include: pear.yml
+  sudo: yes
