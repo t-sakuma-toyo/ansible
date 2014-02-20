@@ -1,2 +1,0 @@
-- name: gemrcの追加
-  action: copy src=gemrc dest=/home/{{ ruby_dep_user }}/.gemrc owner={{ ruby_dep_user }} group={{ ruby_dep_user }} mode=0750
