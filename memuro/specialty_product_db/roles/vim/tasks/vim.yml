@@ -20,5 +20,11 @@
   git: repo=https://github.com/pater4/vim.git
     dest=/home/vagrant/vim
 
+- name: 設定ファイル権限変更
+  file: path=/home/vagrant/vim state=directory recurse=yes owner=vagrant group=vagrant mode=0777
+
 - name: 設定ファイルルーティング
   action: copy src=_vimrc dest=/home/vagrant/_vimrc owner=vagrant group=vagrant mode=0755
+
+- name: vim用のごみ箱作成
+  file: path=/home/vagrant/.vimfiler_trashbox state=directory owner=vagrant group=vagrant mode=0777
