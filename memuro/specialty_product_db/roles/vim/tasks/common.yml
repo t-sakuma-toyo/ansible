@@ -1,0 +1,7 @@
+- name: vimの依存するパッケージインストール
+  yum: name={{ item }} state=latest
+  with_items:
+    - ncurses-devel
+    - lua-devel
+    - perl-ExtUtils-Embed
+    - python-devel

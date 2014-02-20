@@ -1,0 +1,24 @@
+- name: vimのアンインストール
+  yum: name=vim state=absent
+
+- name: vimのソース取得
+  get_url: url=ftp://ftp.vim.org/pub/vim/unix/vim-7.4.tar.bz2 dest=/usr/local/src/vim-7.4.tar.bz2 mode=0777
+
+- name: vimのソース解凍
+  command: chdir=/usr/local/src tar xvf vim-7.4.tar.bz2
+
+- name: vimのコンフィグ
+  command: chdir=/usr/local/src/vim74 ./configure --enable-multibyte --with-features=huge --enable-luainterp --enable-perlinterp --enable-pythoninterp --with-python-config-dir=/usr/lib/python2.6/config --enable-rubyinterp --with-ruby-command=/usr/bin/ruby
+
+- name: vimのMake
+  command: chdir=/usr/local/src/vim74 make
+
+- name: vimのInstall
+  command: chdir=/usr/local/src/vim74 make install
+
+- name: 設定ファイルダウンロード
+  git: repo=https://github.com/pater4/vim.git
+    dest=/home/vagrant/vim
+
+- name: 設定ファイルルーティング
+  action: copy src=_vimrc dest=/home/vagrant/_vimrc owner=vagrant group=vagrant mode=0755

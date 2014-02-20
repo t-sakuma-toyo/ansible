@@ -1,0 +1,2 @@
+- name: PHPインストール
+  yum: name=php54w state=latest

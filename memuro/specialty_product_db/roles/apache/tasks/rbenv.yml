@@ -1,0 +1,34 @@
+- name: rbenvインストール
+  git: repo=https://github.com/sstephenson/rbenv.git
+       dest={{ rbenv_root }}
+
+- name: rbenvインストール2-1
+  copy: src=bashrbenv
+        dest=~{{ ruby_dep_user }}/.bashrbenv
+        mode=700
+        owner={{ ruby_dep_user }}
+
+- name: rbenvインストール2-2
+  lineinfile: dest=~{{ ruby_dep_user }}/.bash_profile
+              regexp="^source \.bashrbenv"
+              insertafter=EOF
+              line="source .bashrbenv" create=yes
+
+- name: rbenvインストール3
+  action: file path={{ rbenv_root }}/plugins/
+          owner=root
+          group=root
+          mode=0777
+          state=directory
+
+- name: rbenvインストール4
+  git: repo=https://github.com/sstephenson/ruby-build.git
+       dest={{ rbenv_root }}/plugins/ruby-build
+
+- name: rbenv権限変更
+  action: file path={{ rbenv_root }}
+          owner=root
+          group=root
+          mode=0777
+          state=directory
+
