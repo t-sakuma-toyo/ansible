@@ -1,2 +1,8 @@
+- name: MySQLサーバーインストール
+  yum: name=mysql-server disablerepo=CentALT state=latest
+
 - name: MySQLインストール
   yum: name=mysql disablerepo=CentALT state=latest
+
+- name: MySQLサーバー起動
+  service: name=mysqld state=started enabled=yes
