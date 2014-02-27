@@ -7,5 +7,5 @@
 - include: pear.yml
   sudo: yes
 
-- include: phpunit.yml
-  sudo: yes
+#- include: phpunit.yml
+# sudo: yes
