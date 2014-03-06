@@ -1,0 +1,5 @@
+- name: PHPインストール
+  yum: name=php disablerepo=CentALT state=latest
+
+- name: GDインストール
+  yum: name=php-gd disablerepo=CentALT state=latest

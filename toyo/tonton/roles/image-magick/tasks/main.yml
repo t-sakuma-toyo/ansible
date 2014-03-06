@@ -1,0 +1,2 @@
+- include: image-magick.yml
+  sudo: yes

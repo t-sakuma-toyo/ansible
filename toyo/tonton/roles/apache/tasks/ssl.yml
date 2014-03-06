@@ -1,0 +1,5 @@
+- name: SSLモジュールインストール
+  yum: name=mod_ssl state=latest
+
+- name: Apache再起動
+  service: name=httpd state=restarted enabled=yes

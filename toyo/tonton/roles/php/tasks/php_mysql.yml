@@ -1,0 +1,2 @@
+- name: PHP_MySQLインストール
+  yum: name=php-mysql disablerepo=CentALT state=latest

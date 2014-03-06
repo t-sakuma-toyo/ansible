@@ -1,0 +1,8 @@
+- name: Apacheインストール
+  yum: name=httpd state=latest
+
+- name: ユーザーをapacheグループに追加
+  user: name=vagrant groups=apache
+
+- name: Apache起動
+  service: name=httpd state=started enabled=yes

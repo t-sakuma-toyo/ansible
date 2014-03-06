@@ -1,0 +1,2 @@
+- name: Pearインストール
+  yum: name=php-pear disablerepo=CentALT state=latest

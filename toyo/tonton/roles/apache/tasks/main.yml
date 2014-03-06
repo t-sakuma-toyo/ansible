@@ -1,0 +1,8 @@
+- include: common.yml
+  sudo: yes
+
+- include: apache.yml
+  sudo: yes
+
+- include: ssl.yml
+  sudo: yes

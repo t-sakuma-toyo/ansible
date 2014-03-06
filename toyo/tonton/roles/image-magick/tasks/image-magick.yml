@@ -1,0 +1,5 @@
+- name: ImageMagickのインストール
+  yum: name={{ item }} state=latest
+  with_items:
+    - ImageMagick
+    - ImageMagick-devel
