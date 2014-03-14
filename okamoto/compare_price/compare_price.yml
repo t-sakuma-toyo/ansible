@@ -1,0 +1,4 @@
+- hosts: compare_price
+  remote_user: vagrant
+  roles:
+      - role: vim

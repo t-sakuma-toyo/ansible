@@ -3,3 +3,6 @@
 
 - name: GDインストール
   yum: name=php54w-gd state=latest
+
+- name: mbstringインストール
+  yum: name=php54w-mbstring state=latest
