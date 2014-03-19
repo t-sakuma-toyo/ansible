@@ -1,6 +1,7 @@
 - hosts: specialty_product_db
   remote_user: vagrant
   roles:
+      - role: git 
       - role: php
       - role: apache
       - role: mysql
