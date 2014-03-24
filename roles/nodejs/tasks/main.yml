@@ -1,0 +1,8 @@
+- include: common.yml
+  sudo: yes
+
+- include: nvm.yml
+  sudo: yes
+
+- include: nodejs.yml
+  sudo: yes

@@ -1,0 +1,11 @@
+- include: php.yml
+  sudo: yes
+
+- include: php_mysql.yml
+  sudo: yes
+
+- include: pear.yml
+  sudo: yes
+
+#- include: phpunit.yml
+# sudo: yes

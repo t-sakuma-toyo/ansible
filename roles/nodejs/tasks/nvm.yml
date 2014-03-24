@@ -1,0 +1,31 @@
+- name: インストール
+  git: repo=git://github.com/creationix/nvm.git dest={{ nvm_root }}
+  tags:
+    - nodejs
+
+- name: インストール2-1
+  copy: src=bashnvm
+        dest=~{{ nvm_dep_user }}/.bashnvm
+        mode=700
+        owner={{ nvm_dep_user }}
+  tags:
+    - nodejs
+
+- name: インストール2-2
+  lineinfile: dest=~{{ nvm_dep_user }}/.bash_profile
+              regexp="^source \.bashnvm"
+              insertafter=EOF
+              line="source .bashnvm" create=yes
+  tags:
+    - nodejs
+
+- name: 権限変更
+  action: file path={{ nvm_root }}
+          owner=root
+          group=root
+          mode=0777
+          state=directory
+          recurse=yes
+  tags:
+    - nodejs
+

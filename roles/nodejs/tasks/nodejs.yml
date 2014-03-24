@@ -1,0 +1,33 @@
+- name: nodejsが既にインストールされていないかチェック
+  shell: source {{ nvm_path }} && nvm version | grep {{ version }} | tr '*' ' ' | sed -e 's/\s\+//' | cut -f1 -d ' '
+  register: nodejs_is_installed
+  environment:
+    PATH: "{{ bin_path }}"
+  tags:
+    - nodejs
+
+- name: インストール
+  shell: source {{ nvm_path }} &&  nvm install {{ version }}
+  async: 12000
+  poll: 60
+  when: nodejs_is_installed.stdout == ""
+  environment:
+    PATH: "{{ bin_path }}"
+  tags:
+    - nodejs
+
+- name: 設定
+  shell: source {{ nvm_path }} && nvm use {{ version }}
+  when: nodejs_is_installed.stdout == ""
+  environment:
+    PATH: "{{ bin_path }}"
+  tags:
+    - nodejs
+
+- name: デフォルト設定
+  shell: source {{ nvm_path }} && nvm alias default {{ version }}
+  when: nodejs_is_installed.stdout == ""
+  environment:
+    PATH: "{{ bin_path }}"
+  tags:
+    - nodejs

@@ -2,3 +2,9 @@
   remote_user: vagrant
   roles:
       - role: vim
+      - role: nodejs
+        version: v0.10.25
+        nvm_dep_user: vagrant
+        nvm_root: "/usr/local/.nvm"
+        bin_path: "{{ ansible_env.PATH }}"
+        nvm_path: "/usr/local/.nvm/nvm.sh"
