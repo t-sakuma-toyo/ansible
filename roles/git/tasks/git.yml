@@ -1,0 +1,5 @@
+- name: Gitインストール
+  yum: name=git state=latest
+
+- name: Git-Flowプラグインインストール
+  yum: name=gitflow state=latest

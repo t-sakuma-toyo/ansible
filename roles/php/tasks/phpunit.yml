@@ -1,0 +1,12 @@
+- name: PHPUnitインストール
+  command: "{{ item }}"
+  with_items:
+    - pear channel-discover pear.phpunit.de
+    - pear channel-discover pear.symfony-project.com
+    - pear channel-discover components.ez.no
+    - pear channel-discover pear.symfony.com
+    - pear update-channels
+    - pear upgrade-all
+    - pear install pear.symfony.com/Yaml
+    - pear install --alldeps pear.phpunit.de/PHPUnit 
+    - pear install --force --alldeps pear.phpunit.de/PHPUnit

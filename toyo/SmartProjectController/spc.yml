@@ -1,0 +1,4 @@
+- hosts: spc
+  remote_user: vagrant
+  roles:
+      - role: vim

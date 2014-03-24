@@ -1,0 +1,5 @@
+- name: yumパッケージのインストール
+  yum: name={{ item }} state=latest
+  with_items:
+    - git
+    - samba

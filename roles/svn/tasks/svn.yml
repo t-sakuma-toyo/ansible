@@ -1,0 +1,4 @@
+- name: SVNのインストール
+  yum: name={{ item }} disablerepo=CentALT state=latest
+  with_items:
+    - subversion
