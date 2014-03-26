@@ -15,6 +15,12 @@
     - { protocol: udp, port: 464 }
     - { protocol: udp, port: 53 }
     - { protocol: udp, port: 123 }
+    - { protocol: tcp, port: 9000 }
+    - { protocol: tcp, port: 9001 }
+  tags:
+    - iptable
 
 - name: ファイアウォール再起動
   action: service name=iptables state=restarted
+  tags:
+    - iptable
