@@ -1,0 +1,4 @@
+- name: grunt-cliインストール
+  npm: name=grunt-cli executable={{ nvm_root }}/{{ version }}/bin/npm state=latest global=yes
+  tags:
+      - gruntcli

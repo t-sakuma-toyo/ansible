@@ -1,0 +1,2 @@
+- include: bower.yml
+  sudo: yes

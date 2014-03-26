@@ -1,6 +1,14 @@
 - hosts: spc
   remote_user: vagrant
   roles:
+      - role: git
+      - role: iptable
+      - role: ruby
+        version: 2.1.0
+        ruby_dep_user: vagrant
+        rbenv_root: "/usr/local/rbenv"
+        bin_path: "/usr/local/rbenv/bin:{{ ansible_env.PATH }}"
+      - role: compass
       - role: vim
       - role: nodejs
         version: v0.10.25
@@ -8,3 +16,12 @@
         nvm_root: "/usr/local/.nvm"
         bin_path: "{{ ansible_env.PATH }}"
         nvm_path: "/usr/local/.nvm/nvm.sh"
+      - role: grunt-cli
+        nvm_root: "/usr/local/.nvm"
+        version: v0.10.25
+      - role: bower
+        nvm_root: "/usr/local/.nvm"
+        version: v0.10.25
+      - role: yo
+        nvm_root: "/usr/local/.nvm"
+        version: v0.10.25

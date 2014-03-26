@@ -1,0 +1,4 @@
+- name: bowerインストール
+  npm: name=bower executable={{ nvm_root }}/{{ version }}/bin/npm state=latest global=yes
+  tags:
+      - bower

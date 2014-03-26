@@ -1,0 +1,4 @@
+- name: yoインストール
+  npm: name=yo executable={{ nvm_root }}/{{ version }}/bin/npm state=latest global=yes
+  tags:
+      - yo
